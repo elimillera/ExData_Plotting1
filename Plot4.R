@@ -1,0 +1,12 @@
+
+dat <- read.table('household_power_consumption.txt', header = TRUE, sep = ';', na.strings = '?')
+datFeb <- subset(dat, subset = (dat$Date == '1/2/2007' | dat$Date == '2/2/2007'))
+par(mfrow = c(2,2))
+plot(datFeb$Global_active_power, type = 'l', ylab = ' Global Active Power', xlab = '')
+plot(datFeb$Voltage, type = 'l', ylab = ' Voltage', xlab = '')
+plot(datFeb$Sub_metering_1, type = 'l', ylab = ' Global Active Power', xlab = '')
+lines(datFeb$Sub_metering_2, type = 'l', col = 'red')
+lines(datFeb$Sub_metering_3, type = 'l', col = 'blue')
+plot(datFeb$Global_reactive_power, type = 'l', ylab = ' Global Reactive Power', xlab = '')
+dev.copy(png, file = 'plot4.png', width = 480, height = 480)
+dev.off()

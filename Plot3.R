@@ -1,0 +1,7 @@
+dat <- read.table('household_power_consumption.txt', header = TRUE, sep = ';', na.strings = '?')
+datFeb <- subset(dat, subset = (dat$Date == '1/2/2007' | dat$Date == '2/2/2007'))
+plot(datFeb$Sub_metering_1, type = 'l')
+lines(datFeb$Sub_metering_2, type = 'l', col = 'red')
+lines(datFeb$Sub_metering_3, type = 'l', col = 'blue')
+dev.off()
+dev.copy(png, file = 'plot3.png', width = 480, height = 480)
